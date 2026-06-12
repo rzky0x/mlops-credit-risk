@@ -1,0 +1,27 @@
+# Python virtual environment
+mlops-env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# TFX pipeline internal artifacts (too large for git)
+rzky0x-pipeline/_wheels/
+rzky0x-pipeline/metadata/
+rzky0x-pipeline/CsvExampleGen/
+rzky0x-pipeline/Transform/transformed_examples/
+rzky0x-pipeline/Transform/updated_analyzer_cache/
+

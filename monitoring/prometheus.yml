@@ -1,0 +1,12 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: 'tensorflow-serving-credit-risk'
+    scrape_interval: 5s
+    metrics_path: '/monitoring/prometheus/metrics'
+    static_configs:
+      - targets: ['tensorflow-serving:8501']
+        labels:
+          instance: 'credit-risk-model'
