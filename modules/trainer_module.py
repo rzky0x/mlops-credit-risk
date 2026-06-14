@@ -4,13 +4,10 @@ This module contains the run_fn function used by the TFX Trainer component
 to build, train, and export a DNN classifier for credit risk prediction.
 """
 
-import os
-from typing import List
-
 import tensorflow as tf
 import tensorflow_transform as tft
 from tfx_bsl.public import tfxio
-from tensorflow.keras import layers
+from tensorflow.keras import layers  # pylint: disable=import-error,no-name-in-module
 
 from modules.transform_module import (
     CATEGORICAL_FEATURES,
@@ -116,7 +113,7 @@ def _get_feature_columns():
     return feature_columns
 
 
-def _build_keras_model(feature_columns):
+def _build_keras_model():
     """Build a Keras DNN model for binary classification.
 
     Architecture: Dense(256) -> Dense(128) -> Dense(64) -> Dense(1)
@@ -160,6 +157,7 @@ def _build_keras_model(feature_columns):
     # Output layer
     outputs = layers.Dense(1, activation='sigmoid')(x)
 
+    # pylint: disable=no-member
     model = tf.keras.Model(inputs=input_features, outputs=outputs)
 
     model.compile(
@@ -170,6 +168,7 @@ def _build_keras_model(feature_columns):
             tf.keras.metrics.AUC(name='auc'),
         ]
     )
+    # pylint: enable=no-member
 
     model.summary()
 
@@ -204,8 +203,7 @@ def run_fn(fn_args):
     )
 
     # Build the model
-    feature_columns = _get_feature_columns()
-    model = _build_keras_model(feature_columns)
+    model = _build_keras_model()
 
     # Train the model
     model.fit(
@@ -215,7 +213,7 @@ def run_fn(fn_args):
         validation_steps=fn_args.eval_steps,
         epochs=10,
         callbacks=[
-            tf.keras.callbacks.EarlyStopping(
+            tf.keras.callbacks.EarlyStopping(  # pylint: disable=no-member
                 monitor='val_binary_accuracy',
                 patience=5,
                 restore_best_weights=True
@@ -238,4 +236,3 @@ def run_fn(fn_args):
         save_format='tf',
         signatures=signatures,
     )
-
