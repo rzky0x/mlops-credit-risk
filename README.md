@@ -14,7 +14,7 @@ Username dicoding: rzky0x
 | Metrik evaluasi | **AUC (Area Under ROC Curve)**: Mengukur kemampuan model membedakan antara kelas positif dan negatif. **Binary Accuracy**: Mengukur proporsi prediksi yang benar. Threshold blessing: AUC ≥ 0.7, Binary Accuracy ≥ 0.7. |
 | Performa model | Model berhasil mencapai performa yang memenuhi threshold yang ditetapkan dan mendapatkan status "blessed" dari komponen Evaluator. Detail metrik dapat dilihat pada output komponen Evaluator di notebook `rzky0x-pipeline.ipynb`. |
 | Opsi deployment | Model di-deploy menggunakan **TensorFlow Serving** dalam **Docker container** di platform **Railway**. Railway dipilih karena mendukung deployment container Docker secara gratis dan menyediakan public URL otomatis. |
-| Web app | [credit-risk-model](https://<YOUR_RAILWAY_URL>.up.railway.app/v1/models/credit-risk-model/metadata) |
+| Web app | [credit-risk-model](https://mlops-credit-risk-production.up.railway.app/v1/models/credit-risk-model/metadata) |
 | Monitoring | Model serving dimonitor menggunakan **Prometheus** yang mengumpulkan metrics dari endpoint `/monitoring/prometheus/metrics` pada TF Serving. Dashboard monitoring dibuat menggunakan **Grafana** untuk visualisasi metrics seperti request count, latency, dan model status. Prometheus dikonfigurasi dengan scrape interval 5 detik untuk memastikan monitoring real-time. |
 
 ## Struktur Proyek

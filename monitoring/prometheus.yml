@@ -7,6 +7,6 @@ scrape_configs:
     scrape_interval: 5s
     metrics_path: '/monitoring/prometheus/metrics'
     static_configs:
-      - targets: ['tensorflow-serving:8501']
+      - targets: ['mlops-credit-risk-production.up.railway.app']
         labels:
           instance: 'credit-risk-model'
