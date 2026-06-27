@@ -1,7 +1,7 @@
 # Submission 1: Nama Proyek Anda
-Nama:
+Nama: Muhammad Rizky Aulia Ramadhan
 
-Username dicoding:
+Username dicoding: rzky0x
 
 | | Deskripsi |
 | ----------- | ----------- |
