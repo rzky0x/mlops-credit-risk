@@ -1,12 +1,12 @@
 global:
-  scrape_interval: 15s
-  evaluation_interval: 15s
+    scrape_interval: 15s
+    evaluation_interval: 15s
+    external_labels:
+        monitor: "tf-serving-monitor"
 
 scrape_configs:
-  - job_name: 'tensorflow-serving-credit-risk'
-    scrape_interval: 5s
-    metrics_path: '/monitoring/prometheus/metrics'
-    static_configs:
-      - targets: ['mlops-credit-risk-production.up.railway.app']
-        labels:
-          instance: 'credit-risk-model'
+    - job_name: "prometheus"
+      scrape_interval: 5s
+      metrics_path: /monitoring/prometheus/metrics
+      static_configs:
+        - targets: ['mlops-credit-risk-production.up.railway.app']
